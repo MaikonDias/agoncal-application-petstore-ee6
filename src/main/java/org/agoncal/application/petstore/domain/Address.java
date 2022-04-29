@@ -25,8 +25,8 @@ import lombok.AllArgsConstructor;
     @Column(nullable = false)
     @NotNull
     @Size(min = 5, max = 50)
-    @Getter private String street1;
-    @Getter private String street2;
+    @Getter @Setter private String street1;
+    @Getter @Setter private String street2;
     @Column(nullable = false, length = 100)
     @NotNull
     @Size(min = 2, max = 50)
