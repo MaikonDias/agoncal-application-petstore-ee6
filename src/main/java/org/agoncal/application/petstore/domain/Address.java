@@ -5,6 +5,7 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Antonio Goncalves
@@ -27,16 +28,16 @@ public class Address {
     @Column(nullable = false, length = 100)
     @NotNull
     @Size(min = 2, max = 50)
-    @Getter private String city;
-    @Getter private String state;
+    @Getter @Setter private String city;
+    @Getter @Setter private String state;
     @Column(name = "zip_code", nullable = false, length = 10)
     @NotNull
     @Size(min = 1, max = 10)
-    @Getter private String zipcode;
+    @Getter @Setter private String zipcode;
     @Column(nullable = false, length = 50)
     @NotNull
     @Size(min = 2, max = 50)
-    @Getter private String country; // TODO use an enum
+    @Getter @Setter private String country; // TODO use an enum
 
     // ======================================
     // =            Constructors            =
@@ -49,34 +50,6 @@ public class Address {
         this.street1 = street1;
         this.city = city;
         this.zipcode = zipcode;
-        this.country = country;
-    }
-
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
-
-    public void setStreet1(String street1) {
-        this.street1 = street1;
-    }
-
-    public void setStreet2(String street2) {
-        this.street2 = street2;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public void setCountry(String country) {
         this.country = country;
     }
 
