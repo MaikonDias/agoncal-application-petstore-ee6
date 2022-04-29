@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 /**
  * @author Antonio Goncalves
@@ -14,7 +16,7 @@ import lombok.Setter;
  */
 
 @Embeddable
-public class Address {
+@NoArgsConstructor @AllArgsConstructor public class Address {
 
     // ======================================
     // =             Attributes             =
@@ -38,20 +40,6 @@ public class Address {
     @NotNull
     @Size(min = 2, max = 50)
     @Getter @Setter private String country; // TODO use an enum
-
-    // ======================================
-    // =            Constructors            =
-    // ======================================
-
-    public Address() {
-    }
-
-    public Address(String street1, String city, String zipcode, String country) {
-        this.street1 = street1;
-        this.city = city;
-        this.zipcode = zipcode;
-        this.country = country;
-    }
 
     // ======================================
     // =   Methods hash, equals, toString   =
