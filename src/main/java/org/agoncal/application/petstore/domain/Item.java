@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author Antonio Goncalves
@@ -35,18 +36,18 @@ public class Item {
     @Column(nullable = false, length = 30)
     @NotNull
     @Size(min = 1, max = 30)
-    @Getter private String name;
+    @Getter @Setter private String name;
     @Column(length = 3000)
-    @Getter private String description;
+    @Getter @Setter private String description;
     @Column(nullable = false)
     @Price
-    @Getter private Float unitCost;
+    @Getter @Setter private Float unitCost;
     @NotEmpty
-    @Getter private String imagePath;
+    @Getter @Setter private String imagePath;
     @ManyToOne
     @JoinColumn(name = "product_fk", nullable = false)
     @XmlTransient
-    @Getter private Product product;
+    @Getter @Setter private Product product;
 
     // ======================================
     // =             Constants              =
@@ -68,30 +69,6 @@ public class Item {
         this.unitCost = unitCost;
         this.imagePath = imagePath;
         this.product = product;
-        this.description = description;
-    }
-
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setUnitCost(Float unitCost) {
-        this.unitCost = unitCost;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
     }
 
