@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 
 /**
  * @author Antonio Goncalves
@@ -32,18 +33,18 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Getter private Long id;
     @Column(nullable = false, length = 30)
     @NotNull
     @Size(min = 1, max = 30)
-    private String name;
+    @Getter private String name;
     @Column(nullable = false)
     @NotEmpty
-    private String description;
+    @Getter private String description;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     @OrderBy("name ASC")
     @XmlTransient
-    private List<Product> products;
+    @Getter private List<Product> products;
 
     // ======================================
     // =             Constants              =
@@ -67,21 +68,8 @@ public class Category {
     // ======================================
     // =         Getters & setters          =
     // ======================================
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setDescription(String description) {
@@ -92,10 +80,6 @@ public class Category {
         if (products == null)
             products = new ArrayList<Product>();
         products.add(product);
-    }
-
-    public List<Product> getProducts() {
-        return products;
     }
 
     public void setProducts(List<Product> products) {
