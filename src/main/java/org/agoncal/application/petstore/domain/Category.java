@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.AccessLevel;
 
 /**
  * @author Antonio Goncalves
@@ -26,6 +27,8 @@ import lombok.Setter;
         @NamedQuery(name = Category.FIND_ALL, query = "SELECT c FROM Category c")
 })
 @XmlRootElement
+@Getter
+@Setter
 public class Category {
 
     // ======================================
@@ -34,18 +37,18 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter private Long id;
+    @Setter(AccessLevel.NONE) private Long id;
     @Column(nullable = false, length = 30)
     @NotNull
     @Size(min = 1, max = 30)
-    @Getter @Setter private String name;
+    private String name;
     @Column(nullable = false)
     @NotEmpty
-    @Getter @Setter private String description;
+    private String description;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     @OrderBy("name ASC")
     @XmlTransient
-    @Getter @Setter private List<Product> products;
+    private List<Product> products;
 
     // ======================================
     // =             Constants              =
