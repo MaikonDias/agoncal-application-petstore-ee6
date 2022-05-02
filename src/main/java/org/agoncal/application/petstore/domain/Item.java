@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Antonio Goncalves
@@ -24,6 +25,7 @@ import lombok.Setter;
         @NamedQuery(name = Item.FIND_ALL, query = "SELECT i FROM Item i")
 })
 @XmlRootElement
+@NoArgsConstructor
 public class Item {
 
     // ======================================
@@ -60,9 +62,6 @@ public class Item {
     // ======================================
     // =            Constructors            =
     // ======================================
-
-    public Item() {
-    }
 
     public Item(String name, Float unitCost, String imagePath, Product product, String description) {
         this.name = name;
