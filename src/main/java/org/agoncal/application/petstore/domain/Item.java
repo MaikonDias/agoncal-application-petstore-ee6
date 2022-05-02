@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 /**
@@ -26,6 +27,8 @@ import lombok.NoArgsConstructor;
 })
 @XmlRootElement
 @NoArgsConstructor
+@Getter 
+@Setter
 public class Item {
 
     // ======================================
@@ -34,22 +37,22 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter private Long id;
+    @Setter(AccessLevel.NONE) private Long id;
     @Column(nullable = false, length = 30)
     @NotNull
     @Size(min = 1, max = 30)
-    @Getter @Setter private String name;
+    private String name;
     @Column(length = 3000)
     @Getter @Setter private String description;
     @Column(nullable = false)
     @Price
-    @Getter @Setter private Float unitCost;
+    private Float unitCost;
     @NotEmpty
-    @Getter @Setter private String imagePath;
+    private String imagePath;
     @ManyToOne
     @JoinColumn(name = "product_fk", nullable = false)
     @XmlTransient
-    @Getter @Setter private Product product;
+    private Product product;
 
     // ======================================
     // =             Constants              =
