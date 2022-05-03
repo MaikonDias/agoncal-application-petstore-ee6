@@ -10,6 +10,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.AccessLevel;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Antonio Goncalves
@@ -27,6 +28,7 @@ import lombok.Setter;
 @XmlRootElement
 @Getter
 @Setter
+@NoArgsConstructor
 public class Product {
 
     // ======================================
@@ -61,10 +63,7 @@ public class Product {
     // ======================================
     // =            Constructors            =
     // ======================================
-
-    public Product() {
-    }
-
+    
     public Product(String name, String description, Category category) {
         this.name = name;
         this.description = description;
