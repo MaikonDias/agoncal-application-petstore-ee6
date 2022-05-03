@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.List;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
 import lombok.Setter;
 /**
@@ -20,6 +21,8 @@ import lombok.Setter;
         @NamedQuery(name = Order.FIND_ALL, query = "SELECT o FROM Order o")
 })
 @Getter
+@Setter
+@NoArgsConstructor
 public class Order {
 
     // ======================================
@@ -54,9 +57,6 @@ public class Order {
     // ======================================
     // =            Constructors            =
     // ======================================
-
-    public Order() {
-    }
 
     public Order(Customer customer, CreditCard creditCard, Address deliveryAddress) {
         this.customer = customer;
