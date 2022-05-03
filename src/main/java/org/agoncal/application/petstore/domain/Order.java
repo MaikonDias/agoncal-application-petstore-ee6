@@ -5,6 +5,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.List;
 import lombok.Getter;
+import lombok.AccessLevel;
+import lombok.Setter;
 /**
  * @author Antonio Goncalves
  *         http://www.antoniogoncalves.org
@@ -26,10 +28,10 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Setter(AccessLevel.NONE) private Long id;
     @Column(name = "order_date", updatable = false)
     @Temporal(TemporalType.DATE)
-    private Date orderDate;
+    @Setter(AccessLevel.NONE) private Date orderDate;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_fk", nullable = false)
     private Customer customer;
@@ -87,38 +89,6 @@ public class Order {
         }
 
         return total;
-    }
-
-    // ======================================
-    // =         Getters & setters          =
-    // ======================================
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public void setOrderLines(List<OrderLine> orderLines) {
-        this.orderLines = orderLines;
-    }
-
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
-    public void setCreditCard(CreditCard creditCard) {
-        this.creditCard = creditCard;
-    }
-    
-    public void setCreditCardNumber(String creditCardNumber) {
-        creditCard.setCreditCardNumber(creditCardNumber);
-    }
-
-    public void setCreditCardType(CreditCardType creditCardType) {
-        creditCard.setCreditCardType(creditCardType);
-    }
-
-    public void setCreditCardExpiryDate(String creditCardExpiryDate) {
-        creditCard.setCreditCardExpDate(creditCardExpiryDate);
     }
 
     // ======================================
